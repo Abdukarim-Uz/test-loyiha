@@ -61,7 +61,6 @@ export default function Home() {
 
                 {/* Swiper Karusel */}
                 <Swiper
-                    modules={[Navigation]}
                     navigation={true}
                     freeMode={true}
                     spaceBetween={20}
