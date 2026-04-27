@@ -11,10 +11,10 @@ const AdminPage: React.FC = () => {
         const form = new FormData(event.currentTarget)
         const dataObj = Object.fromEntries(form.entries())
 
-        if (dataObj.email === "abdukarim@gmail.com" && dataObj.password === "1234567890") {
-            redirect('/home')
-        } else {
+        if (dataObj.email === "abdukarimt463@gmail.com" && dataObj.password === "1234567890") {
             redirect("/admin")
+        } else {
+            redirect('/home')
         }
 
     }
