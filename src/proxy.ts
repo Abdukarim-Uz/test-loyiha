@@ -1,15 +1,17 @@
-// middleware.ts
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 
-export function proxy(request: NextRequest) {
-    const token = false
-    const isAdminPath = request.nextUrl.pathname.startsWith('/admin')
+const protectedRoutes = ['/admin']
 
-    if (isAdminPath && !token) {
-        // Agar token bo'lmasa, login sahifasiga yo'naltirish
-        return NextResponse.redirect(new URL('/auth', request.url))
+export function proxy(request: NextRequest) {
+    const path = request.nextUrl.pathname
+    const isProctedRoute = protectedRoutes.includes(path)
+    const token = request.cookies.get('token')?.value
+    if (isProctedRoute && !token) {
+        return NextResponse.redirect(new URL('/auth', request.nextUrl))
     }
+
+    return NextResponse.next()
 }
 
 export const config = {

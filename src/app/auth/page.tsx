@@ -1,20 +1,21 @@
 "use client"
 import Link from 'next/link';
-import { redirect } from 'next/navigation';
+import { redirect, useRouter } from 'next/navigation';
 import React, { SubmitEvent } from 'react';
-
+import Cookies from 'js-cookie'
 
 const AdminPage: React.FC = () => {
-
+    const router = useRouter()
     const hanlderSubmit = (event: SubmitEvent<HTMLFormElement>) => {
         event.preventDefault();
         const form = new FormData(event.currentTarget)
         const dataObj = Object.fromEntries(form.entries())
 
         if (dataObj.email === "abdukarimt463@gmail.com" && dataObj.password === "1234567890") {
-            redirect("/admin")
+            Cookies.set('token', 'maxfiy-token-123', { expires: 3 })
+            router.push("/admin")
         } else {
-            redirect('/home')
+            router.push('/home')
         }
 
     }
