@@ -1,13 +1,11 @@
 "use client";
 
-import { motion } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, EffectFade, Pagination } from 'swiper/modules';
 import Navbar from '@/src/features/navbar/Navbar';
 import 'swiper/css';
 import 'swiper/css/effect-fade';
 import 'swiper/css/pagination';
-import { Navigation } from 'lucide-react';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/src/store/store';
 import MoviesMap from '@/src/features/maps/moviesMap/MoviesMap';
@@ -70,7 +68,7 @@ export default function Home() {
                         1024: { slidesPerView: 4.2 },
                         1280: { slidesPerView: 5.2 }, // Desktop uchun
                     }}
-                    className="movie-swiper !overflow-visible"
+                    className="movie-swiper overflow-visible!"
                 >
                     {MOVIES?.map((movie: { id: number, title: string, image: string, rating: string, year: string }, index: number) => (
                         <SwiperSlide key={movie.id} >

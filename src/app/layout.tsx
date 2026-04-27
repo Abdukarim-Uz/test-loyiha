@@ -4,6 +4,9 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import ReduxProvider from "./reduxProvider/ReduxProvide";
 import { Toaster } from "@/components/ui/sonner";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { hydrateHero } from "../store/features/heroSlice/HeroSlice";
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-sans' });
 
@@ -27,6 +30,13 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    // Sahifa brauzerda yuklanishi bilan localStorage'dan ma'lumotlarni Redux'ga olib o'tamiz
+    dispatch(hydrateHero());
+  }, [dispatch]);
   return (
     <html
       lang="en"
