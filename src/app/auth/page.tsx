@@ -12,7 +12,7 @@ const AdminPage: React.FC = () => {
         const dataObj = Object.fromEntries(form.entries())
 
         if (dataObj.email === "abdukarimt463@gmail.com" && dataObj.password === "1234567890") {
-            Cookies.set('token', 'maxfiy-token-123', { expires: 3 })
+            Cookies.set('token', 'acwvtrgecsveakcewnrgcqiwogtqouygtoqwygoserkutgqiwuygrquiedr9qyewg8', { expires: 3 })
             router.push("/admin")
         } else {
             router.push('/home')
